@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:tns="http://sourceforge.net/bpmn/definitions/_1465982190482" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:yaoqiang="http://bpmn.sourceforge.net" exporter="Yaoqiang BPMN Editor" exporterVersion="4.0" expressionLanguage="http://www.w3.org/1999/XPath" id="_1465982190482" name="" targetNamespace="http://sourceforge.net/bpmn/definitions/_1465982190482" typeLanguage="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL http://bpmn.sourceforge.net/schemas/BPMN20.xsd">
+  <process id="PROCESS_1" isClosed="false" isExecutable="true" processType="None">
+    <extensionElements>
+
+	<!-- MONITORIZED GROUP -->
+	<monitoringGroup id="_ext9" description="Measure dimensions of the product">
+		<ioSpecification id="_ext11">
+			<dataOutput id="_ext10"/>
+		</ioSpecification>
+		<dataOutputAssociation id="_ext12">
+			<sourceRef>_ext10</sourceRef>
+			<targetRef>_do1</targetRef>
+		</dataOutputAssociation>
+		<monitoringVariable id="_ext13" varName="height" description="Height of the product" type="float" required="true"/>
+		<monitoringVariable id="_ext14" varName="width" description="Width of the product" type="float" required="true"/>
+		<monitoringVariable id="_ext15" varName="weight" description="Weight of the product" type="float" required="true"/>
+	</monitoringGroup>
+
+	<monitoringGroup id="_ext70" description="Measure several characteristics">
+		<ioSpecification id="_ext71">
+			<dataOutput id="_ext72"/>
+		</ioSpecification>
+		<dataOutputAssociation id="_ext73">
+			<sourceRef>_ext10</sourceRef>
+			<targetRef>_do4</targetRef>
+		</dataOutputAssociation>
+		<monitoringVariable id="_ext74" varName="color" description="Color of the product" type="string" required="false"/>
+		<monitoringVariable id="_ext75" varName="fissures" description="Check for fissures of the product" type="boolean" required="true"/>
+		<monitoringVariable id="_ext76" varName="weight" description="Weight of the product" type="float" required="false"/>
+	</monitoringGroup>
+
+        <!-- ACTIVITY EFFECT[_ext16] -->
+	<activityEffect id="_ext16" description="Effect of paint in the product">
+		<activityEffectRule id="_ext17" description="Changes in the color" rule="color = 'blue'"/>
+		<activityEffectRule id="_ext18" description="Changes in the surface style" rule="surface = 'gloss'"/>
+		<activityEffectRule id="_ext19" description="Changes in the weight due to the paint" rule="weight += 10 g"/>
+	</activityEffect>
+
+	<!-- TIME[_ext16] -->
+	<timeExpected id="_ext50" description="Time expected for label a piece" >
+		<expected id="_ext150" value="1" unit ="min" description=""/>
+		<margin id="_ext151" value="5" unit ="s" description=""/>
+	</timeExpected>
+
+	<!-- DECISION QUESTION[_ext20] -->
+	<decisionQuestion id="_ext60" description="If product has fissures, it is neccessary to repair it." expression="fissures = true" type="quality">
+		<ioSpecification id="_ext62">
+			<dataInput id="_ext61"/>
+		</ioSpecification>
+		<dataInputAssociation id="_ext63">
+			<sourceRef>_do2</sourceRef>
+			<targetRef>_ext61</targetRef>
+		</dataInputAssociation>
+	</decisionQuestion>
+
+
+	<!-- DECISION QUESTION[_ext20] -->
+	<decisionQuestion id="_ext20" description="If dimensions fits, then paint the product" expression="width &gt; 200 cm" type="normal">
+		<ioSpecification id="_ext22">
+			<dataInput id="_ext21"/>
+		</ioSpecification>
+		<dataInputAssociation id="_ext23">
+			<sourceRef>_do3</sourceRef>
+			<targetRef>_ext21</targetRef>
+		</dataInputAssociation>
+	</decisionQuestion>
+
+	<!-- DATA OBJECT REFERENCES -->
+	<dataObjectReference id="_do1" dataObjectRef="DO_PROCESS_1"/>
+	<dataObjectReference id="_do2" dataObjectRef="DO_PROCESS_1"/>
+	<dataObjectReference id="_do3" dataObjectRef="DO_PROCESS_1"/>
+	<dataObjectReference id="_do4" dataObjectRef="DO_PROCESS_1"/>
+
+	<!-- ASSOCIATIONS -->
+	<association id="_extA0" sourceRef="_2" targetRef="_ext9" associationDirection="NONE"/>
+	<association id="_extA1" sourceRef="_7" targetRef="_ext70" associationDirection="NONE"/>
+	<association id="_extA2" sourceRef="_4" targetRef="_ext16" associationDirection="NONE"/>
+	<association id="_extA3" sourceRef="_23" targetRef="_ext50" associationDirection="NONE"/>
+	<association id="_ext51" sourceRef="_10" targetRef="_ext20" associationDirection="NONE"/>
+	<association id="_ext52" sourceRef="_21" targetRef="_ext60" associationDirection="NONE"/>
+
+    </extensionElements>
+    <task completionQuantity="1" id="_2" isForCompensation="false" name="Measure" startQuantity="1">
+      <outgoing>_9</outgoing>
+    </task>
+    <task completionQuantity="1" id="_3" isForCompensation="false" name="B" startQuantity="1">
+      <incoming>_10</incoming>
+      <outgoing>_12</outgoing>
+    </task>
+    <task completionQuantity="1" id="_4" isForCompensation="false" name="Paint" startQuantity="1">
+      <incoming>_11</incoming>A
+      <outgoing>_13</outgoing>
+    </task>
+    <task completionQuantity="1" id="_7" isForCompensation="false" name="Check" startQuantity="1">
+      <incoming>_14</incoming>
+      <outgoing>_22</outgoing>
+    </task>
+    <task completionQuantity="1" id="_17" isForCompensation="false" name="Repair" startQuantity="1">
+      <incoming>_21</incoming>
+      <outgoing>_19</outgoing>
+    </task>
+    <task completionQuantity="1" id="_16" isForCompensation="false" name="F" startQuantity="1">
+      <incoming>_20</incoming>
+      <outgoing>_18</outgoing>
+    </task>
+    <task completionQuantity="1" id="_23" isForCompensation="false" name="Label" startQuantity="1">
+      <incoming>_24</incoming>
+    </task>
+    <exclusiveGateway gatewayDirection="Diverging" id="_5" name="Exclusive Gateway">
+      <incoming>_9</incoming>
+      <outgoing>_10</outgoing>
+      <outgoing>_11</outgoing>
+    </exclusiveGateway>
+    <exclusiveGateway gatewayDirection="Converging" id="_6" name="Exclusive Gateway">
+      <incoming>_12</incoming>
+      <incoming>_13</incoming>
+      <outgoing>_14</outgoing>
+    </exclusiveGateway>
+    <exclusiveGateway gatewayDirection="Diverging" id="_15" name="Exclusive Gateway">
+      <incoming>_22</incoming>
+      <outgoing>_20</outgoing>
+      <outgoing>_21</outgoing>
+    </exclusiveGateway>
+    <exclusiveGateway gatewayDirection="Converging" id="_8" name="Exclusive Gateway">
+      <incoming>_18</incoming>
+      <incoming>_19</incoming>
+      <outgoing>_24</outgoing>
+    </exclusiveGateway>
+    <sequenceFlow id="_9" sourceRef="_2" targetRef="_5"/>
+    <sequenceFlow id="_10" sourceRef="_5" targetRef="_3"/>
+    <sequenceFlow id="_11" sourceRef="_5" targetRef="_4"/>
+    <sequenceFlow id="_12" sourceRef="_3" targetRef="_6"/>
+    <sequenceFlow id="_13" sourceRef="_4" targetRef="_6"/>
+    <sequenceFlow id="_14" sourceRef="_6" targetRef="_7"/>
+    <sequenceFlow id="_18" sourceRef="_16" targetRef="_8"/>
+    <sequenceFlow id="_19" sourceRef="_17" targetRef="_8"/>
+    <sequenceFlow id="_20" sourceRef="_15" targetRef="_16"/>
+    <sequenceFlow id="_21" sourceRef="_15" targetRef="_17"/>    
+    <sequenceFlow id="_22" sourceRef="_7" targetRef="_15"/>
+    <sequenceFlow id="_24" sourceRef="_8" targetRef="_23"/>
+    <dataObject id="DO_PROCESS_1" isCollection="false" name="DO_A"/>
+  </process>
+</definitions>
+

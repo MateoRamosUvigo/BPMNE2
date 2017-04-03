@@ -16,24 +16,12 @@
 <xsd:complexType name="tMonitoringVariable">
 <xsd:complexContent>
 	<xsd:extension base="tBaseElement">
-		<xsd:attribute name="varName" type="xsd:string"/>
 		<xsd:attribute name="description" type="xsd:string"/>
-		<xsd:attribute name="type" type="xsd:string" default="xsd:string"/>
 		<xsd:attribute name="required" type="xsd:boolean" default="false"/>
-		<xsd:attribute name="changeability" type="tChangeabilityTypes" default="static"/>
+		<xsd:attribute name="content" type="xsd:string"/>
 	</xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
-
-<xsd:simpleType name="tChangeabilityTypes">
-	<xsd:restriction base="xsd:string">
-		<xsd:enumeration value="static"/>
-		<xsd:enumeration value="dynamic"/>
-	</xsd:restriction>
-</xsd:simpleType>
-
-
-
 
 <xsd:element name="activityEffect" type="tActivityEffect"/>
 
@@ -53,7 +41,6 @@
 	<xsd:extension base="tBaseElement">
 		<xsd:attribute name="description" type="xsd:string"/>
 		<xsd:attribute name="rule" type="xsd:string"/>
-		<xsd:attribute name="changeability" type="tChangeabilityTypes" default="static"/>
 	</xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
@@ -67,23 +54,41 @@
 <xsd:complexContent>
 	<xsd:extension base="tArtifact">
 		<xsd:sequence>
-			<xsd:element name="expected" type="tTimeValue" minOccurs="1" maxOccurs="1"/>
-			<xsd:element name="margin" type="tTimeValue" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="param" type="tParam" minOccurs="1" maxOccurs="2"/>
 		</xsd:sequence>
-		<xsd:attribute name="description" type="xsd:string"/>
+		<xsd:attribute name="description" type="xsd:string"/>		
+		<xsd:attribute name="probabilisticDistribution" type="tDistribution"/>
 	</xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
 
-<xsd:complexType name="tTimeValue">
+<xsd:complexType name="tParam">
 <xsd:complexContent>
 	<xsd:extension base="tBaseElement">
 		<xsd:attribute name="value" type="xsd:decimal" default="0.0"/>
 		<xsd:attribute name="unit" type="xsd:string" default="s"/>
-		<xsd:attribute name="description" type="xsd:string"/>
+		<xsd:attribute name="name" type="tUnit"/>
 	</xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
+
+<xsd:simpleType name="tDistribution">
+	<xsd:restriction base="xsd:string">
+		<xsd:enumeration value="normal"/>
+		<xsd:enumeration value="uniform"/>
+		<xsd:enumeration value="exponential"/>
+	</xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="tUnit">
+	<xsd:restriction base="xsd:string">
+		<xsd:enumeration value="d"/>
+		<xsd:enumeration value="h"/>
+		<xsd:enumeration value="m"/>
+		<xsd:enumeration value="s"/>
+		<xsd:enumeration value="ms"/>
+	</xsd:restriction>
+</xsd:simpleType>
 
 
 <xsd:element name="decisionQuestion" type="tDecisionQuestion"/>
@@ -96,16 +101,7 @@
 			<xsd:element ref="dataInputAssociation" minOccurs="0" maxOccurs="1"/>
 		</xsd:sequence>
 		<xsd:attribute name="description" type="xsd:string"/>
- 		<xsd:attribute name="expression" type="xsd:string"/>
-		<xsd:attribute name="type" type="tDecisionQuestionTypes"/>
+ 		<xsd:attribute name="condition" type="xsd:string"/>
 	</xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
-
-	<xsd:simpleType name="tDecisionQuestionTypes">
-		<xsd:restriction base="xsd:string">
-			<xsd:enumeration value="normal"/>
-			<xsd:enumeration value="quality"/>
-		</xsd:restriction>
-	</xsd:simpleType>
-

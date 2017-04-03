@@ -3,8 +3,8 @@
   <process id="PROCESS_1" isClosed="false" isExecutable="true" processType="None">
     <extensionElements>
 
-	<!-- MONITORIZED GROUP -->
-	<monitoringGroup id="_ext9" description="Measure dimensions of the product">
+	<!-- MONITORING GROUP -->
+	<monitoringGroup id="_ext9" description="Monitoring of time characteristics">
 		<ioSpecification id="_ext11">
 			<dataOutput id="_ext10"/>
 		</ioSpecification>
@@ -12,9 +12,8 @@
 			<sourceRef>_ext10</sourceRef>
 			<targetRef>_do1</targetRef>
 		</dataOutputAssociation>
-		<monitoringVariable id="_ext13" varName="height" description="Height of the product" type="float" required="true" changeability="static"/>
-		<monitoringVariable id="_ext14" varName="width" description="Width of the product" type="float" required="true" changeability="static"/>
-		<monitoringVariable id="_ext15" varName="depth" description="Depth of the product" type="float" required="true" changeability="static"/>
+		<monitoringVariable id="_ext13" description="Register date" required="true" content="cons instance date a23Date"/>
+		<monitoringVariable id="_ext14" description="Register hour" required="false" content="cons instance hour a23Hour"/>
 	</monitoringGroup>
 
 	<!-- DATA OBJECT REFERENCES -->
@@ -85,4 +84,3 @@
     <dataObject id="DO_PROCESS_1" isCollection="false" name="DO_A"/>
   </process>
 </definitions>
-

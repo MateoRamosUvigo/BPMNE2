@@ -4,10 +4,10 @@
     <extensionElements>
 
 	<!-- ACTIVITY EFFECT[_ext16] -->
-	<activityEffect id="_ext16" description="Effect of paint in the product">
-		<activityEffectRule id="_ext17" description="Changes in the color" rule="color = 'blue'" changeability="static"/>
-		<activityEffectRule id="_ext18" description="Changes in the surface style" rule="surface = 'gloss'" changeability="static"/>
-		<activityEffectRule id="_ext19" description="Changes in the weight due to the paint" rule="weight += 10 g" changeability="dynamic"/>
+	<activityEffect id="_ext16" description="Effect produced by adding potassium to NP">
+		<activityEffectRule id="_ext17" description="The volume of the NP is incremented" rule="always onExecution NP_vol += 18.0"/>
+		<activityEffectRule id="_ext18" description="The volume of the Syringe containing potassium is decremented" rule="always onExecution Syringe-F_vol -= 18.0"/>
+		<activityEffectRule id="_ext19" description="The components list included in the NP is incremented with Potassium" rule="always onExecution NP_comp.push(“K”)"/>
 	</activityEffect>
 
 	<!-- ASSOCIATIONS -->
@@ -17,7 +17,7 @@
     <task completionQuantity="1" id="_2" isForCompensation="false" name="A" startQuantity="1">
       <outgoing>_9</outgoing>
     </task>
-    <task completionQuantity="1" id="_4" isForCompensation="false" name="Paint" startQuantity="1">
+    <task completionQuantity="1" id="_4" isForCompensation="false" name="Add Potassium" startQuantity="1">
       <incoming>_10</incoming>
       <outgoing>_12</outgoing>
     </task>
@@ -75,4 +75,3 @@
     <dataObject id="DO_PROCESS_1" isCollection="false" name="DO_A"/>
   </process>
 </definitions>
-

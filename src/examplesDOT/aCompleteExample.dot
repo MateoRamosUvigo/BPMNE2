@@ -1,1 +1,54 @@
-digraph { node [shape=box]; _ext9 [shape=none, image="stereotype_monitoringGroup.png", label="height\nwidth\nweight\n", width=0.2, fontsize=12]; _ext9 -> _do1 [style=dashed minlen=2]; {rank=same;_ext9   _do1}; _ext70 [shape=none, image="stereotype_monitoringGroup.png", label="color\nfissures\nweight\n", width=0.2, fontsize=12]; _ext70 -> _do4 [style=dashed minlen=2]; {rank=same;_ext70   _do4}; _ext16 [shape=none, image="stereotype_activitEffect.png", label="color = 'blue'\nsurface = 'gloss'\nweight += 10 g\n", width=0.2, fontsize=12]; _ext50 [shape=none, image="stereotype_TimeExpected.png", label="\n\n\n1 min ± 5 s", width=0.2, fontsize=12]; _ext60 [shape=none, image="stereotype_decisionQuestionQuality.png", label="\n\n\nfissures = true", width=0.2 , fontsize=12]; _do2 -> _ext60[style=dashed minlen=2]; {rank=same;_ext60   _do2}; _ext20 [shape=none, image="stereotype_decisionQuestionNormal.png", label="\n\n\nwidth > 200 cm", width=0.2 , fontsize=12]; _do3 -> _ext20[style=dashed minlen=2]; {rank=same;_ext20   _do3}; _do1 [shape=none, image="stereotype_dataObject.png", label="DO_A", width=0.2, fontsize=12]; _do2 [shape=none, image="stereotype_dataObject.png", label="DO_A", width=0.2, fontsize=12]; _do3 [shape=none, image="stereotype_dataObject.png", label="DO_A", width=0.2, fontsize=12]; _do4 [shape=none, image="stereotype_dataObject.png", label="DO_A", width=0.2, fontsize=12]; _2 -> _ext9 [style=dashed minlen=2]; {rank=same;_2   _ext9 }; _7 -> _ext70 [style=dashed minlen=2]; {rank=same;_7   _ext70 }; _4 -> _ext16 [style=dashed minlen=2]; {rank=same;_4   _ext16 }; _23 -> _ext50 [style=dashed minlen=2]; {rank=same;_23   _ext50 }; _10 -> _ext20 [style=dashed minlen=2]; {rank=same;_10   _ext20 }; _21 -> _ext60 [style=dashed minlen=2]; {rank=same;_21   _ext60 }; _2 [shape=box,style=filled,fillcolor="#ffffff",label="Measure",width=0.2]; _3 [shape=box,style=filled,fillcolor="#ffffff",label="B",width=0.2]; _4 [shape=box,style=filled,fillcolor="#ffffff",label="Paint",width=0.2]; _7 [shape=box,style=filled,fillcolor="#ffffff",label="Check",width=0.2]; _17 [shape=box,style=filled,fillcolor="#ffffff",label="Repair",width=0.2]; _16 [shape=box,style=filled,fillcolor="#ffffff",label="F",width=0.2]; _23 [shape=box,style=filled,fillcolor="#ffffff",label="Label",width=0.2]; _5 [label="X",fillcolor="#eeeeee",style=filled,width=0.75,height=0.75,fixedsize=true,shape="diamond"]; _6 [label="X",fillcolor="#eeeeee",style=filled,width=0.75,height=0.75,fixedsize=true,shape="diamond"]; _15 [label="X",fillcolor="#eeeeee",style=filled,width=0.75,height=0.75,fixedsize=true,shape="diamond"]; _8 [label="X",fillcolor="#eeeeee",style=filled,width=0.75,height=0.75,fixedsize=true,shape="diamond"]; _2 -> _5 [label=""];_10[shape=point width=0] _5 -> _10 [label="" dir=none]; _10 ->	_3 [label=""]; _5 -> _4 [label=""];_3 -> _6 [label=""];_4 -> _6 [label=""];_6 -> _7 [label=""];_16 -> _8 [label=""];_17 -> _8 [label=""];_15 -> _16 [label=""];_21[shape=point width=0] _15 -> _21 [label="" dir=none]; _21 ->	_17 [label=""]; _7 -> _15 [label=""];_8 -> _23 [label=""]; }
+
+  
+	digraph {
+		node [shape=box];
+		
+
+    
+	_ext9 [shape=none, image="stereotype_monitoringGroup.png", label="cons instance date a23Date\ncons instance hour a23Hour\n", width=0.2, fontsize=10];
+
+
+	
+	_ext50 [shape=none, image="stereotype_TimeExpected.png", label="\n\n\n\n\nmean:2 h\nstadandardDeviation:5 m\n", width=0.2, fontsize=10];
+
+
+	
+	_ext60 [shape=none, image="stereotype_decisionQuestionQuality.png", label="\n\n\n\nTemperature < 2 || Temperature > 8", width=0.2 , fontsize=10];
+
+
+	
+	_ext16 [shape=none, image="stereotype_activitEffect.png", label="always onExecution NP_vol += 18.0\nalways onExecution Syringe-F_vol -= 18.0\nalways onExecution NP_comp.push(“K”)\n", width=0.2, fontsize=10];
+
+
+	
+	_4 -> _ext16 [style=dashed minlen=2];
+	{rank=same;_4 _ext16 };
+
+	_20 -> _ext60 [style=dashed minlen=2];
+	{rank=same;_20 _ext60 };
+
+	_23 -> _ext50 [style=dashed minlen=2];
+	{rank=same;_23 _ext50 };
+
+	_2 -> _ext9 [style=dashed minlen=2];
+	{rank=same;_2 _ext9 };
+
+
+    _2 [shape=box,style=filled,fillcolor="#ffffff",label="Measure",width=0.2];
+_3 [shape=box,style=filled,fillcolor="#ffffff",label="B",width=0.2];
+_4 [shape=box,style=filled,fillcolor="#ffffff",label="Add Potassium",width=0.2];
+_7 [shape=box,style=filled,fillcolor="#ffffff",label="D",width=0.2];
+_17 [shape=box,style=filled,fillcolor="#ffffff",label="E",width=0.2];
+_16 [shape=box,style=filled,fillcolor="#ffffff",label="F",width=0.2];
+_23 [shape=box,style=filled,fillcolor="#ffffff",label="Store",width=0.2];
+_5 [label="X",fillcolor="#eeeeee",style=filled,width=0.75,height=0.75,fixedsize=true,shape="diamond"];
+_6 [label="X",fillcolor="#eeeeee",style=filled,width=0.75,height=0.75,fixedsize=true,shape="diamond"];
+_15 [label="X",fillcolor="#eeeeee",style=filled,width=0.75,height=0.75,fixedsize=true,shape="diamond"];
+_8 [label="X",fillcolor="#eeeeee",style=filled,width=0.75,height=0.75,fixedsize=true,shape="diamond"];
+_2 -> _5 [label=""];_5 -> _3 [label=""];_5 -> _4 [label=""];_3 -> _6 [label=""];_4 -> _6 [label=""];_6 -> _7 [label=""];_16 -> _8 [label=""];_17 -> _8 [label=""];_20[shape=point width=0]
+	_15 -> _20 [label="" dir=none];
+	_20 ->	_16 [label=""];
+	_15 -> _17 [label=""];_7 -> _15 [label=""];_8 -> _23 [label=""];
+		}
+
+

@@ -3,8 +3,8 @@
   <process id="PROCESS_1" isClosed="false" isExecutable="true" processType="None">
     <extensionElements>
 
-	<!-- DECISION QUESTION[_ext20] -->
-	<decisionQuestion id="_ext60" description="If product has fissures, it will not pass the quality exam." expression="fissures = true" type="quality">
+	<!-- DECISION QUESTION[_ext60] -->
+	<decisionQuestion id="_ext60" description="Take this path when temperature is too high" type="quality" condition="Temperature &lt; 2 || Temperature &gt; 8">
 		<ioSpecification id="_ext62">
 			<dataInput id="_ext61"/>
 		</ioSpecification>
@@ -13,6 +13,7 @@
 			<targetRef>_ext61</targetRef>
 		</dataInputAssociation>
 	</decisionQuestion>
+
 
 	<!-- DATA OBJECT REFERENCES -->
 	<dataObjectReference id="_do1" dataObjectRef="DO_PROCESS_1"/>
@@ -82,4 +83,3 @@
     <dataObject id="DO_PROCESS_1" isCollection="false" name="DO_A"/>
   </process>
 </definitions>
-

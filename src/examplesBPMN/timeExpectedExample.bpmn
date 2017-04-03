@@ -4,9 +4,9 @@
     <extensionElements>
 
 	<!-- TIME[_ext16] -->
-	<timeExpected id="_ext50" description="Time expected for sawing a piece" >
-		<expected id="_ext100" value="50" unit ="min" description=""/>
-		<margin id="_ext101" value="2" unit ="min" description=""/>
+	<timeExpected id="_ext50" description="Store in refrigerator" probabilisticDistribution = "normal">
+		<param id="_ext100" name="mean" value="2" unit ="h"/>
+		<param id="_ext101" name="stadandardDeviation" value="5" unit ="m"/>
 	</timeExpected>
 
 	<!-- ASSOCIATIONS -->
@@ -36,7 +36,7 @@
       <incoming>_20</incoming>
       <outgoing>_18</outgoing>
     </task>
-    <task completionQuantity="1" id="_23" isForCompensation="false" name="Sawing" startQuantity="1">
+    <task completionQuantity="1" id="_23" isForCompensation="false" name="Store" startQuantity="1">
       <incoming>_24</incoming>
     </task>
     <exclusiveGateway gatewayDirection="Diverging" id="_5" name="Exclusive Gateway">
@@ -74,4 +74,3 @@
     <dataObject id="DO_PROCESS_1" isCollection="false" name="DO_A"/>
   </process>
 </definitions>
-
